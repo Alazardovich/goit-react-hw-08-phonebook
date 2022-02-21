@@ -5,7 +5,12 @@ import { fetchContacts, addContact, deleteContact } from "./contAsyncThunk";
 const contactsSlice = createSlice({
   name: "contacts",
   initialState: {
-    items: [],
+    items: [
+      // { id: nanoid(), name: "Rosie Simpson", number: "459-12-56" },
+      // { id: nanoid(), name: "Hermione Kline", number: "443-89-12" },
+      // { id: nanoid(), name: "Eden Clements", number: "645-17-79" },
+      // { id: nanoid(), name: "Annie Copeland", number: "227-91-26" },
+    ],
     isLoading: false,
     error: null,
     filter: "",
@@ -54,7 +59,7 @@ const contactsSlice = createSlice({
       const index = state.items.findIndex(
         (user) => user.id === action.payload.id
       );
-      console.log(index);
+      // console.log(index);
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: (state, action) => {
@@ -65,7 +70,3 @@ const contactsSlice = createSlice({
 });
 export default contactsSlice.reducer;
 export const { changeFilter } = contactsSlice.actions;
-// { id: nanoid(), name: "Rosie Simpson", number: "459-12-56" },
-// { id: nanoid(), name: "Hermione Kline", number: "443-89-12" },
-// { id: nanoid(), name: "Eden Clements", number: "645-17-79" },
-// { id: nanoid(), name: "Annie Copeland", number: "227-91-26" },

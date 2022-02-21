@@ -22,8 +22,8 @@ const ContactList = () => {
     <p>...Loading</p>
   ) : (
     <ListContainer>
-      {items.map(({ id, name, phone }) => {
-        return <ContactItem key={id} id={id} name={name} number={phone} />;
+      {items.map(({ id, name, number }) => {
+        return <ContactItem key={id} id={id} name={name} number={number} />;
       })}
     </ListContainer>
   );
