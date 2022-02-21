@@ -1,19 +1,15 @@
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
 import { Item } from "./CSSContactItem";
-import { deleteContact } from "../../redux/contacts/contAsyncThunk";
 // import { getLoading } from "../../redux/contacts/contactsSelected";
-
-const ContactItem = ({ name, number, id }) => {
-  const dispatch = useDispatch();
-
+const ContactItem = ({ name, number, id, handleDelete }) => {
+  const deleteCl = () => handleDelete(id);
   return (
     <Item>
       <span>
         {name}: {number}
       </span>
 
-      <button type="button" onClick={() => dispatch(deleteContact(id))}>
+      <button type="button" onClick={deleteCl}>
         Delete
       </button>
     </Item>

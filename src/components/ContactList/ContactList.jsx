@@ -6,24 +6,29 @@ import {
   getVisibleItems,
   getLoading,
 } from "../../redux/contacts/contactsSelected";
+import { deleteContact } from "../../redux/contacts/contAsyncThunk";
 import { ListContainer } from "./CSSContactList";
-import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contacts/contAsyncThunk";
 
 const ContactList = () => {
   const items = useSelector(getVisibleItems);
   const loading = useSelector(getLoading);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  const handleDelete = (id) => dispatch(deleteContact(id));
 
   return loading ? (
     <p>...Loading</p>
   ) : (
     <ListContainer>
       {items.map(({ id, name, number }) => {
-        return <ContactItem key={id} id={id} name={name} number={number} />;
+        return (
+          <ContactItem
+            key={id}
+            id={id}
+            name={name}
+            number={number}
+            handleDelete={handleDelete}
+          />
+        );
       })}
     </ListContainer>
   );
