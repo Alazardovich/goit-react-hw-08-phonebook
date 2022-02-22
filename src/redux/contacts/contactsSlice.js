@@ -55,10 +55,11 @@ const contactsSlice = createSlice({
     [deleteContact.fulfilled]: (state, action) => {
       state.isLoading = false;
       // state.items = state.items.filter(({ id }) => id !== action.payload);
+      // console.log(state.items);
       const index = state.items.findIndex(
-        (user) => action.payload.id === user.id
+        (user) => user.id === action.payload.id
       );
-      // console.log(index);
+      console.log(action.payload.id);
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: (state, action) => {

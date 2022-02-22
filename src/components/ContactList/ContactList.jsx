@@ -1,7 +1,8 @@
-// import React, { Component } from "react";
+// import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import ContactItem from "../ContactItem/Item";
+// import { fetchContacts } from "../../redux/contacts/contAsyncThunk";
 import {
   getVisibleItems,
   getLoading,
@@ -13,6 +14,11 @@ const ContactList = () => {
   const items = useSelector(getVisibleItems);
   const loading = useSelector(getLoading);
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
+
   const handleDelete = (id) => dispatch(deleteContact(id));
 
   return loading ? (

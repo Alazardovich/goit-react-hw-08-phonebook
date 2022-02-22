@@ -15,8 +15,8 @@ export const getVisibleItems = createSelector(
   [getItems, getFilter],
   (items, filter) => {
     const normalizedFilter = filter.toLowerCase();
-    return items.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter)
+    return items.filter((item) =>
+      item.name.toLowerCase().includes(normalizedFilter)
     );
   }
 );

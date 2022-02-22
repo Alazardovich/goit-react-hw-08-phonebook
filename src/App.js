@@ -9,12 +9,14 @@ import {
   HomeView,
 } from "./components/views";
 import authOperations from "./redux/auth/authAsyncThunk";
+// import { fetchContacts } from "./redux/contacts/contAsyncThunk";
 import AppBar from "./components/Navigation/AppBar";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // dispatch(fetchContacts());
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
   return (
