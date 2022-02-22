@@ -1,7 +1,8 @@
 import "./App.css";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import { getLoggedIn } from "./redux/auth/authSelector";
 import {
   ContactsView,
   RegisterView,
@@ -9,16 +10,20 @@ import {
   HomeView,
 } from "./components/views";
 import authOperations from "./redux/auth/authAsyncThunk";
-// import { fetchContacts } from "./redux/contacts/contAsyncThunk";
+import { fetchContacts } from "./redux/contacts/contAsyncThunk";
 import AppBar from "./components/Navigation/AppBar";
 
 function App() {
   const dispatch = useDispatch();
-
+  const isLoggedIn = useSelector(getLoggedIn);
   useEffect(() => {
-    // dispatch(fetchContacts());
+    if (isLoggedIn) {
+      dispatch(fetchContacts());
+    }
+
     dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, []]);
   return (
     <>
       <AppBar />
