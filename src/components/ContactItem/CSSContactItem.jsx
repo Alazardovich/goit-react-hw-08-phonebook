@@ -11,6 +11,9 @@ export const Item = styled.li`
   &:not(first-child) {
     margin-top: 5px;
   }
+  span {
+    color: #d4d1d1;
+  }
   & button {
     width: 70px;
     font-size: 12px;

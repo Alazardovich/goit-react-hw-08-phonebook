@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const FormList = styled.form`
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding: 10px;
   width: 345px;
   height: auto;
-  border: 2px solid #000000;
 
   & input {
     margin-top: 5px;
@@ -15,10 +15,11 @@ export const FormList = styled.form`
     border-color: rgba(235, 236, 240);
     text-align: center;
     font-size: 14px;
+    border-radius: 5px;
   }
 
   & input:hover {
-    background-color: rgba(130, 231, 231, 0.4);
+    background-color: rgba(130, 231, 231, 0.6);
   }
   & button {
     width: 150px;

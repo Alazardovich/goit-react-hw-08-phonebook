@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/auth/authAsyncThunk";
+import { Form, Label } from "./CSSComponents";
 
 const LoginView = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,8 @@ const LoginView = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
+        <h1>Login</h1>
         <label>
           Email
           <input
@@ -36,7 +38,7 @@ const LoginView = () => {
             onChange={handleChange}
           />
         </label>
-        <label>
+        <Label>
           Password
           <input
             type="password"
@@ -44,9 +46,9 @@ const LoginView = () => {
             value={password}
             onChange={handleChange}
           />
-        </label>
+        </Label>
         <button type="submit">Sign in</button>
-      </form>
+      </Form>
     </div>
   );
 };
