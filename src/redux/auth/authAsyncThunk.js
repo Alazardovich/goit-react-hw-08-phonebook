@@ -14,10 +14,12 @@ const token = {
 const register = createAsyncThunk("auth/register", async (credentials) => {
   try {
     const { data } = await axios.post("/users/signup", credentials);
+    console.log(data);
+    console.log(credentials);
     token.set(data.token);
     return data;
   } catch (err) {
-    console.log(err);
+    alert(`Введите другой email: ${err}`);
   }
 });
 const logIn = createAsyncThunk("auth/login", async (credentials) => {
@@ -26,7 +28,7 @@ const logIn = createAsyncThunk("auth/login", async (credentials) => {
     token.set(data.token);
     return data;
   } catch (err) {
-    console.log(err);
+    alert(`Not avtorization: ${err}`);
   }
 });
 const logOut = createAsyncThunk("auth/logout", async () => {

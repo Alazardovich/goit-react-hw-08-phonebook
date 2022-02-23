@@ -15,10 +15,6 @@ const ContactList = () => {
   const loading = useSelector(getLoading);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
-
   const handleDelete = (id) => dispatch(deleteContact(id));
 
   return loading ? (

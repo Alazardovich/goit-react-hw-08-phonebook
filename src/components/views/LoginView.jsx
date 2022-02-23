@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authOperations from "../../redux/auth/authAsyncThunk";
 import { Form, Label } from "./CSSComponents";
+import { getLoggedIn } from "../../redux/auth/authSelector";
 
 const LoginView = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const isLoggedIn = useSelector(getLoggedIn);
 
   const handleSubmit = (event) => {
     event.preventDefault();
