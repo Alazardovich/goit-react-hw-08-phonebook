@@ -68,3 +68,22 @@ export const ContainerContacts = styled.div`
     rgba(41, 53, 86, 1) 100%
   );
 `;
+
+export const Div = styled.div`
+  text-align: center;
+  width: 1000px;
+  margin: 0 auto;
+  height: 70px;
+  border-radius: 5px;
+  color: #fcc159;
+  background-color: rgba(89, 131, 252, 1);
+  background-image: linear-gradient(
+    90deg,
+    rgba(89, 131, 252, 1) 0%,
+    rgba(41, 53, 86, 1) 100%
+  );
+  h2 {
+    margin: 0;
+    padding-top: 15px;
+  }
+`;

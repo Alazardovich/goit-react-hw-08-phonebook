@@ -1,12 +1,15 @@
 import "../../App.css";
 import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
 import ContactForm from "../Form/Form";
 import Filter from "../Filter/Filter";
 import ContactList from "../ContactList/ContactList.jsx";
-import { ContainerContacts } from "./CSSComponents";
+import { ContainerContacts, Div } from "./CSSComponents";
+import { getLoggedIn } from "../../redux/auth/authSelector";
 
 const ContactsView = () => {
-  return (
+  const isLoggedIn = useSelector(getLoggedIn);
+  return isLoggedIn ? (
     <ContainerContacts>
       <h1>Phonebook</h1>
       <ContactForm />
@@ -15,6 +18,11 @@ const ContactsView = () => {
       <ContactList />
       <Toaster />
     </ContainerContacts>
+  ) : (
+    <Div>
+      {" "}
+      <h2>Что выспользоваться телефонной книгой нужна авторизация</h2>
+    </Div>
   );
 };
 export default ContactsView;

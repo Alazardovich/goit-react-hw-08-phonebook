@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+// import { Outlet } from "react-router-dom";
 import Navigation from "./Navigation";
 import UserMenu from "../UserMenu/UserMenu";
 import AuthNav from "./AuthNav";
@@ -6,9 +7,11 @@ import { getLoggedIn } from "../../redux/auth/authSelector";
 import styled from "styled-components";
 
 const Header = styled.header`
-  width: 100%;
+  width: 1000px;
   font-family: "Roboto Serif", sans-serif;
   display: flex;
+  margin: 0 auto;
+  align-items: center;
   font-size: 20px;
   justify-content: space-between;
   background-color: rgba(89, 131, 252, 1);

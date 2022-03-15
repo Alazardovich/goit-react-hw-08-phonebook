@@ -11,26 +11,37 @@ const token = {
     axios.defaults.headers.common.Authorization = "";
   },
 };
-const register = createAsyncThunk("auth/register", async (credentials) => {
-  try {
-    const { data } = await axios.post("/users/signup", credentials);
-    console.log(data);
-    console.log(credentials);
-    token.set(data.token);
-    return data;
-  } catch (err) {
-    alert(`Введите другой email: ${err}`);
+const register = createAsyncThunk(
+  "auth/register",
+  async (credentials, rejectWithValue) => {
+    try {
+      const { data } = await axios.post("/users/signup", credentials);
+      console.log(data);
+      console.log(credentials.email);
+      token.set(data.token);
+      return data;
+    } catch (err) {
+      // eslint-disable-next-line no-undef
+      rejectWithValue(err);
+    }
   }
-});
-const logIn = createAsyncThunk("auth/login", async (credentials) => {
-  try {
-    const { data } = await axios.post("/users/login", credentials);
-    token.set(data.token);
-    return data;
-  } catch (err) {
-    alert(`Not avtorization: ${err}`);
+);
+const logIn = createAsyncThunk(
+  "auth/login",
+  async (credentials, rejectWithValue) => {
+    try {
+      if (credentials) {
+        const { data } = await axios.post("/users/login", credentials);
+        token.set(data.token);
+        return data;
+      }
+    } catch (err) {
+      console.log(rejectWithValue);
+      // eslint-disable-next-line no-undef
+      rejectWithValue(err);
+    }
   }
-});
+);
 const logOut = createAsyncThunk("auth/logout", async () => {
   try {
     await axios.post("/users/logout");

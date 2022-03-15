@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import authOperations from "../../redux/auth/authAsyncThunk";
 import { Form, Label } from "./CSSComponents";
+// import { getUserName } from "../../redux/auth/authSelector";
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -12,6 +13,10 @@ export default function RegisterView() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (name === "" || email === "" || password === "") {
+      console.log("err regis");
+      return;
+    }
     dispatch(authOperations.register({ name, email, password }));
     setName("");
     setPassword("");
@@ -38,6 +43,7 @@ export default function RegisterView() {
           <input
             type="text"
             name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             autoComplete="off"
             value={name}
             onChange={handleChange}

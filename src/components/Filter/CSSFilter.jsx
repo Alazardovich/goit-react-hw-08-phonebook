@@ -7,7 +7,9 @@ export const FilterContainer = styled.div`
   align-items: center;
   margin-left: 5px;
   font-size: 18px;
-
+  label {
+    text-align: center;
+  }
   & input {
     display: block;
     border-color: rgba(235, 236, 240);

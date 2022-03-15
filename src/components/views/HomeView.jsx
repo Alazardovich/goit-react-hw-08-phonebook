@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 const Div = styled.div`
   text-align: center;
-  width: 100%;
+  width: 1000px;
+  margin: 0 auto;
   height: 70px;
+  border-radius: 5px;
   color: #fcc159;
   background-color: rgba(89, 131, 252, 1);
   background-image: linear-gradient(
