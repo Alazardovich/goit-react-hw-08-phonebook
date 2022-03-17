@@ -7,7 +7,7 @@ import { getLoggedIn } from "../../redux/auth/authSelector";
 const Nav = styled.div`
   display: flex;
   width: 200px;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin: 10px 20px;
 `;
 
