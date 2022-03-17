@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { RotatingLines } from "react-loader-spinner";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { getLoggedIn, getRefreshing } from "./redux/auth/authSelector";
 // import PrivatRoute from "./components/Navigation/PrivatRoute";
@@ -29,7 +30,22 @@ function App() {
   return (
     <>
       <AppBar />
-      <Suspense fallback={<p>Загружаем...</p>}>
+      <Suspense
+        fallback={
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <RotatingLines
+              width="130"
+              strokeColor="#6495ED"
+              strokeWidth="1"
+              animationDuration="3"
+            />
+          </div>
+        }
+      >
         <Routes>
           {/* <Route path="/" element={<AppBar />}> */}
           <Route path="/" element={<HomeView />} />
