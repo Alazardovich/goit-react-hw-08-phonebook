@@ -11,6 +11,8 @@ const Header = styled.header`
   font-family: "Roboto Serif", sans-serif;
   display: flex;
   margin: 0 auto;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   align-items: center;
   font-size: 20px;
   justify-content: space-between;

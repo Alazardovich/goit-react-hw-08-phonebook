@@ -5,7 +5,9 @@ const Div = styled.div`
   width: 1000px;
   margin: 0 auto;
   height: 70px;
-  border-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  /* border-radius: 5px; */
   color: #fcc159;
   background-color: rgba(89, 131, 252, 1);
   background-image: linear-gradient(
@@ -17,7 +19,9 @@ const Div = styled.div`
 
 const HomeView = () => (
   <Div>
-    <h1 style={{ paddingTop: 10, margin: 0 }}>Я Вас приветствую, Phonebook!</h1>
+    <h1 style={{ paddingTop: 10, margin: 0 }}>
+      Я Вас приветствую, это Phonebook!
+    </h1>
   </Div>
 );
 export default HomeView;
