@@ -33,7 +33,12 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<AppBar />}> */}
           <Route path="/" element={<HomeView />} />
-          <Route path="/register" element={<RegisterView />} />
+          <Route
+            path="/register"
+            element={
+              !isLoggedIn ? <RegisterView /> : <Navigate to="/contacts" />
+            }
+          />
           <Route
             path="/login"
             element={!isLoggedIn ? <LoginView /> : <Navigate to="/contacts" />}
