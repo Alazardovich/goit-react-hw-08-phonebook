@@ -1,9 +1,10 @@
 import "./App.css";
 import { useEffect, Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { getLoggedIn, getRefreshing } from "./redux/auth/authSelector";
-import PrivatRoute from "./components/Navigation/PrivatRoute";
+// import PrivatRoute from "./components/Navigation/PrivatRoute";
+// import PublicRoute from "./components/Navigation/PublicRoute";
 import authOperations from "./redux/auth/authAsyncThunk";
 import { fetchContacts } from "./redux/contacts/contAsyncThunk";
 import AppBar from "./components/Navigation/AppBar";
@@ -33,7 +34,18 @@ function App() {
           {/* <Route path="/" element={<AppBar />}> */}
           <Route path="/" element={<HomeView />} />
           <Route path="/register" element={<RegisterView />} />
-          <Route path="/login" element={<LoginView />} />
+          <Route
+            path="/login"
+            element={!isLoggedIn ? <LoginView /> : <Navigate to="/contacts" />}
+          />
+          {/* <Route
+              path="/login"
+              element={
+                <PublicRoute redirectTo="/contacts" redirected>
+                  <LoginView />
+                </PublicRoute>
+              }
+            /> */}
           <Route
             path="/contacts"
             element={
