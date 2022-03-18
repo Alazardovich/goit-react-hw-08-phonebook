@@ -73,8 +73,10 @@ export const Div = styled.div`
   text-align: center;
   width: 1000px;
   margin: 0 auto;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
   height: 70px;
-  border-radius: 5px;
+
   color: #fcc159;
   background-color: rgba(89, 131, 252, 1);
   background-image: linear-gradient(

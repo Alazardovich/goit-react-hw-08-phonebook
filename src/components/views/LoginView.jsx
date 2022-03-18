@@ -1,24 +1,30 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import authOperations from "../../redux/auth/authAsyncThunk";
 import { Form, Label } from "./CSSComponents";
-// import { getUserEmail } from "../../redux/auth/authSelector";
+// import { getLoggedIn } from "../../redux/auth/authSelector";
 
 const LoginView = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const isUser = useSelector(getUserEmail);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (email === "") {
-      console.log("err log");
-      return;
+    const notify = (text) => toast(text);
+    try {
+      event.preventDefault();
+      if (email === "") {
+        notify("Enter correctly");
+        return;
+      }
+      dispatch(authOperations.logIn({ email, password }));
+      setPassword("");
+      setEmail("");
+    } catch (e) {
+      notify(e);
     }
-    dispatch(authOperations.logIn({ email, password }));
-    setPassword("");
-    setEmail("");
   };
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -55,6 +61,7 @@ const LoginView = () => {
         </Label>
         <button type="submit">Sign in</button>
       </Form>
+      <ToastContainer />
     </div>
   );
 };

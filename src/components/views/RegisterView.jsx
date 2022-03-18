@@ -1,6 +1,8 @@
 /* eslint-disable default-case */
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import authOperations from "../../redux/auth/authAsyncThunk";
 import { Form, Label } from "./CSSComponents";
 // import { getUserName } from "../../redux/auth/authSelector";
@@ -13,8 +15,9 @@ export default function RegisterView() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const notify = (text) => toast(text);
     if (name === "" || email === "" || password === "") {
-      console.log("err regis");
+      notify("Enter correctly");
       return;
     }
     dispatch(authOperations.register({ name, email, password }));
@@ -70,6 +73,7 @@ export default function RegisterView() {
         </Label>
         <button type="submit">Register</button>
       </Form>
+      <ToastContainer />
     </div>
   );
 }

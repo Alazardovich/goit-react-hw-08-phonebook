@@ -20,7 +20,6 @@ const ContactsView = () => {
     </ContainerContacts>
   ) : (
     <Div>
-      {" "}
       <h2>Чтобы вoспользоваться телефонной книгой нужна авторизация</h2>
     </Div>
   );

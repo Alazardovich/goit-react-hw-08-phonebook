@@ -28,13 +28,10 @@ const logIn = createAsyncThunk(
   "auth/login",
   async (credentials, rejectWithValue) => {
     try {
-      if (credentials) {
-        const { data } = await axios.post("/users/login", credentials);
-        token.set(data.token);
-        return data;
-      }
+      const { data } = await axios.post("/users/login", credentials);
+      token.set(data.token);
+      return data;
     } catch (err) {
-      console.log(rejectWithValue);
       // eslint-disable-next-line no-undef
       rejectWithValue(err);
     }
